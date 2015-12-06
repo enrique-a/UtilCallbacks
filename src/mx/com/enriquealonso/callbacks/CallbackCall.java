@@ -19,8 +19,18 @@ package mx.com.enriquealonso.callbacks;
 /**
  * A message to be passed from the caller ({@link CallbackCaller}) to the
  * callable ({@link CallbackCallable}). Includes a {@code token} to state the
- * purpuse of the call and a {@code message} with the information.
- *
+ * purpuse of the call and a {@code message} with the information to be passed
+ * in the call.
+ * 
+ *    +----------+                                +-------------------+
+ *    | Callback |                                | Callback          |
+ *    | Callable |      +----------+              | Caller            |
+ *    +----------+      | Callback |              +-------------------+
+ *    | +call()  | <--- | Call     | <--- new --- | +callback()       |
+ *    +----------+      +----------+              | +addCallable()    |
+ *                                                | +removeCallable() |
+ *                                                +-------------------+
+ * 
  * @author Enrique Alonso <enrique.alonso.paez@gmail.com>
  * @param <T> The type of the message to pass, usually {@code Object}.
  */
